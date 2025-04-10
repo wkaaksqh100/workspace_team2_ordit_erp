@@ -5,7 +5,8 @@ import React, { useEffect, useState } from 'react';
 import SearchIcon from '@rsuite/icons/Search';
 import BuySelectTabAll from "#components/buy/BuySelectTabAll.jsx";
 import "../styles/buy.css";
-import BuySelectTabYet from "#components/buy/BuySelectTabYet.jsx";
+import BuySelectTabUnchk from "#components/buy/BuySelectTabUnchk.jsx";
+import BuySelectTabCheck from "#components/buy/BuySelectTabCheck.jsx";
 
 export function meta() {
     return [
@@ -23,7 +24,7 @@ export default function BuySelect() {
     const [uncheckedCount, setUnCheckedCount] = useState(0);
 
     useEffect(() => {
-        fetch("http://localhost:8081/buy/buyOrderUncheckedList", {
+        fetch("http://localhost:8081/buy/buyOrderUnchkCount", {
             method: "GET"
         })
         .then((res) => res.json())
@@ -75,13 +76,13 @@ export default function BuySelect() {
 
                     <Tabs.Tab eventKey="3" title="미확인">
                         <Container>
-                            <BuySelectTabYet />
+                            <BuySelectTabUnchk />
                         </Container>
                     </Tabs.Tab>
 
                     <Tabs.Tab eventKey="4" title="확인">
                         <Container>
-
+                            <BuySelectTabCheck />
                         </Container>
                     </Tabs.Tab>
                 </Tabs>
